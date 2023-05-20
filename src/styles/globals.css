@@ -2,26 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    padding: 0;
+    margin: 0;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+@layer components {
+    .hover-button:hover{
+        @apply xl:rounded-t-[8px];
+        @apply bg-white;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 4px 8px 0px, rgba(0, 0, 0, 0.08) 0px 0px 2px 1px;
+    }
+    .container {
+        @apply sm:max-w-[calc(100%-40px)] md:max-w-[calc(100%-40px)] lg:max-w-[calc(100%-40px)] xl:w-[calc(100%-64px)] xl:max-w-[1156px] xxl:max-w-[1444px];
+    }
+
+    .banner-button-active{
+        border-color: rgb(51, 51, 51) transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        /*border-bottom-color: rgb(51, 51, 51);*/
+        border-left-color: transparent;
+        border-left: 2px solid transparent;
+        border-right: 2px solid transparent;
+        height: 0px;
+        width: calc(100% - 8px);
+        min-width: 48px;
+        content: "";
+        position: absolute;
+        border-bottom: transparent;
+        /*border-bottom: 4px solid rgb(51, 51, 51);*/
+        top: 0px;
+        transform: translateX(-50%) rotate(180deg);
+        left: 50%;
+    }
+
+    .banner-button-active2{
+        border-bottom-color: rgb(51, 51, 51);
+        border-bottom: 4px solid rgb(51, 51, 51);
+    }
+
+    .shadow-specific{
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 4px 0px, rgba(0, 0, 0, 0.08) 0px 0px 2px 1px;
+    }
+}
+
+#__next {
+    height: 100%;
 }
