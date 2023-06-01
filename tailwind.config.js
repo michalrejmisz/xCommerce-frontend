@@ -30,8 +30,16 @@ module.exports = {
         'gray-banner-hover' : '#333333',
         'gray-banner-font' : '#4d4d4d',
         'gray-banner-hover-button' : '#EBEBEB',
+        'green-cart' : 'rgb(17, 158, 0)',
         // 'gray-span' : '#c9c9c9',
-      }
+      },
+
+      flexBasis: {
+        '1/3' : '31.66666666666665%',
+        '2/3' : '68.33333333333332%'
+      },
+
+
     },
   },
   plugins: [],

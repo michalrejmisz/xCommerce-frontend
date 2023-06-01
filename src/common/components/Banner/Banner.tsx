@@ -115,5 +115,4 @@ const BannerNavbarButton: React.FC<SingleBanner & { onClick: () => void }> = ({i
     )
 }
 
-
 export default Banner;
