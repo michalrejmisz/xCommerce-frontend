@@ -8,7 +8,7 @@ import Icon from "@/common/components/UI/icons/Icon"
 export default function Header(){
     return(
         <header className="mb-[15px]">
-            <div className="flex flex-row h-[72px]">
+            <div className="container flex flex-row h-[72px]">
                 <Logo className="xl:pl-[16px]"/>
                 <SearchBar/>
                 <HeaderActionButtons/>

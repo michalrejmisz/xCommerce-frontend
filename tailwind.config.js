@@ -18,6 +18,10 @@ module.exports = {
       xxl: '1600px',
     },
     extend: {
+      fontFamily: {
+        'lato': ['Lato', 'sans-serif'],
+      },
+
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -32,6 +36,16 @@ module.exports = {
         'gray-banner-hover-button' : '#EBEBEB',
         'green-cart' : 'rgb(17, 158, 0)',
         // 'gray-span' : '#c9c9c9',
+        gray: {
+          50: '#f5f5f5',
+          75: '#f9f9f9',
+          100: '#EBEBEB',
+          200: '#cccccc',
+          250: '#707070FF',
+          300: '#4d4d4d',
+          400: '#333333',
+          'test' : '#dddddd',
+        },
       },
 
       flexBasis: {

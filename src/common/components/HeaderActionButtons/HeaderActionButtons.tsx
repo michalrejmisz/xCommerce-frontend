@@ -25,7 +25,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({name, icon, withSeparator=fa
                     <div className="text-[11px] leading-[12px]">{name}</div>
                 </UnstyledButton>
             </div>
-                {withSeparator && <span className="md:flex md:ml-[8px] md:mr-[12px] md:h-[44px] md:border-r-[1px] md:border-gray-border"/>}
+                {withSeparator && <span className="md:flex md:ml-[8px] md:mr-[12px] md:h-[44px] md:border-r-[1px] md:border-gray-200"/>}
         </>
     );
 }

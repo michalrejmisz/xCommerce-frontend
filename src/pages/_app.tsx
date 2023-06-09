@@ -9,8 +9,17 @@ export default function App({Component, pageProps}: AppProps) {
     return (
         <>
             <MantineProvider
-                withGlobalStyles
-                withNormalizeCSS
+                // withGlobalStyles
+                // withNormalizeCSS
+                theme={{
+                    breakpoints: {
+                        sm: '520px',
+                        md: '720px',
+                        lg: '900px',
+                        xl: '1080px',
+                        xxl: '1600px',
+                    },
+                }}
             >
                 <Layout>
                     <DevSupport ComponentPreviews={ComponentPreviews}

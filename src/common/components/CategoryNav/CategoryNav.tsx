@@ -23,7 +23,7 @@ const mockupData = [
 const CategoryItem: React.FC<CategoryItemProps> = ({name, icon}) => {
     return(
         <li className="flex w-full hover-button px-[12px]">
-          <UnstyledButton className="flex flex-row justify-center items-center h-[48px] w-ming">
+          <UnstyledButton className="flex flex-row justify-center items-center h-[48px] w-min">
               <div className="max-[1200px]:hidden xxl:flex mr-[8px]">
                   {icon}
               </div>
@@ -35,10 +35,10 @@ const CategoryItem: React.FC<CategoryItemProps> = ({name, icon}) => {
 
 export default function CategoryNav(){
     return(
-        <nav>
+        <nav className="bg-gray-50 shadow-md">
             {/* TODO - add gray bars that overflow main wrapper */}
-            {/*<div className="bg-gray-dropdown h-12 absolute -top-1/2 -left-1/2 w-[200%] z-[-1]">*/}
-            <ul className="flex bg-gray-dropdown w-full pt-px shadow-md">
+            {/*<div className="bg-gray-50 h-12 absolute -top-1/2 -left-1/2 w-[200%] z-[-1]">*/}
+            <ul className="container flex w-full pt-px">
                 {/*<div className="container">*/}
                 {mockupData.map((item, index) =>
                     <CategoryItem key={index} name={item.name} icon={item.icon}/>

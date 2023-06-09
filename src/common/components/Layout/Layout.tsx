@@ -5,7 +5,7 @@ import {} from "@/common/components/Banner/Banner"
 export default function Layout({ children }){
     return (
         <>
-            <div className="container">
+            <div>
                 <Header/>
                 <main>{children}</main>
                 <footer>&copy; Website</footer>

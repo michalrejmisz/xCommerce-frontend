@@ -1,11 +1,10 @@
-// TODO
-// Add more responsive styling
-
 import React, { useState } from "react"
 import { UnstyledButton } from "@mantine/core";
 import { Image } from "@/types/global";
 import { Carousel, Embla } from '@mantine/carousel';
 
+// TODO
+// Add more responsive styling
 
 const mockupData = [
     {id: 12, name: "komponenty do 51% taniej", img: "https://cdn.x-kom.pl/i/img/banners/normal,,93a361d5a95e4b4bbe79e72b7d058a19.jpg?filters=trim", link: " "},
@@ -55,7 +54,7 @@ const Banner: React.FC<BannerComponentProps> = ({ banners= mockupData }) => {
     }
 
     return(
-        <div className="flex flex-col">
+        <div className="flex flex-col xl:mb-[24px] bg-white">
             <div className="flex">
                     <Carousel
                         className="block relative rounded-[20px] xxl:max-h-[315px] xxl:h-[315px] xl:max-h-[253px] xl:h-[253px] md:max-h-[250px] md:h-[250px]"
@@ -106,7 +105,7 @@ const BannerNavbarButton: React.FC<SingleBanner & { onClick: () => void }> = ({i
     return(
         <UnstyledButton
             onClick={onClick}
-            className={`flex relative h-[40px] w-full items-center justify-center items-center hover:bg-gray-banner-hover-button hover:rounded-b-md after:banner-button-active ${isActive ? 'font-bold color-black' : ''}`}
+            className={`flex relative h-[40px] w-full items-center justify-center items-center hover:bg-gray-100 hover:rounded-b-md after:banner-button-active ${isActive ? 'font-bold color-black' : ''}`}
         >
             <div className={`flex w-full h-full justify-center items-center inline-block text-ellipsis after:banner-button-active ${isActive ? 'after:banner-button-active2' : ''}`}>
                 {name}

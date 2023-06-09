@@ -13,7 +13,7 @@ const SearchBarInput = () => {
 
 const CategoryDropDown = () => {
     return(
-            <UnstyledButton className="hidden xl:flex items-center justify-center pt-[8px] pr-[9px] pb-[10px] pl-[12px] hover:bg-gray-dropdown hover:rounded-full">
+            <UnstyledButton className="hidden xl:flex items-center justify-center pt-[8px] pr-[9px] pb-[10px] pl-[12px] hover:bg-gray-50 hover:rounded-full">
                     <span>Wszędzie</span>
                     {/*<span className="w-1.5 h-1.5 ml-1">*/}
                         {/*Add conditional depending on hidden list or not*/}
@@ -38,7 +38,7 @@ export default function SearchBar(){
         <>
             {/*<div className="flex bg-white p-5">*/}
                 <div className="flex items-center xl:pr-[8px] xl:pl-[32px] lg:h-full lg:pr-[13px] lg:pl-[24px] xxl:max-w-[775px] xl:max-w-[400px]">
-                    <div className="flex flex-row justify-between items-center rounded-full border border-gray-border bg-white w-full h-[40px] focus:shadow-md">
+                    <div className="flex flex-row justify-between items-center rounded-full border border-gray-200 bg-white w-full h-[40px] focus:shadow-md">
                         <SearchBarInput/>
                         <div role="separator" className="hidden xl:block w-px h-6 bg-gray-400 mx-1"/>
                         <CategoryDropDown/>
