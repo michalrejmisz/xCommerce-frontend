@@ -8,7 +8,7 @@ interface IconProps {
     name: iconSvgType;
     hoverColor?: string
     color?: string;
-    size?: number;
+    size?: number | string;
     stroke?: number;
     className?: string;
 }
@@ -29,6 +29,7 @@ export default function Icon({name, size=24, stroke=1, color="#000000", hoverCol
         // )}>
             <svg xmlns="http://www.w3.org/2000/svg"
                  // fill={color}
+                 preserveAspectRatio="none"
                  style={{fill: "currentColor"}}
                  width={size}
                  height={size}

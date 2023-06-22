@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { UnstyledButton } from "@mantine/core";
-import { Image } from "@/types/global";
 import { Carousel, Embla } from '@mantine/carousel';
 
 // TODO
@@ -41,15 +40,16 @@ interface BannerComponentProps{
 
 
 const Banner: React.FC<BannerComponentProps> = ({ banners= mockupData }) => {
-    const [activeButton, setActiveButton] = useState<string | null>("0");
+    const [activeButton, setActiveButton] = useState<number>(0);
     const [embla, setEmbla] = useState<Embla | null>(null);
 
-    const handleButtonClick = (index: string) => {
+
+    const handleButtonClick = (index: number) => {
         setActiveButton(index);
-        embla.scrollTo(index)
+        embla?.scrollTo(index)
     }
 
-    const handleSlideChange = (index: string) => {
+    const handleSlideChange = (index: number) => {
         setActiveButton(index)
     }
 
@@ -59,7 +59,7 @@ const Banner: React.FC<BannerComponentProps> = ({ banners= mockupData }) => {
                     <Carousel
                         className="block relative rounded-[20px] xxl:max-h-[315px] xxl:h-[315px] xl:max-h-[253px] xl:h-[253px] md:max-h-[250px] md:h-[250px]"
                         getEmblaApi={setEmbla}
-                        onSlideChange={handleSlideChange}
+                        onSlideChange={(index: number) => { handleSlideChange(index) }}
                         styles={{
                             viewport: {
                                 height: "100%",
@@ -70,7 +70,7 @@ const Banner: React.FC<BannerComponentProps> = ({ banners= mockupData }) => {
                         }}
                     >
                         {banners.map((banner, index) => (
-                            <Carousel.Slide className=" h-full w-full">
+                            <Carousel.Slide key={index} className="h-full w-full">
                                 <img
                                     key={banner.id}
                                     src={banner.img}
@@ -86,7 +86,7 @@ const Banner: React.FC<BannerComponentProps> = ({ banners= mockupData }) => {
 }
 
 
-const BannerNavbar: React.FC<BannerComponentProps & { activeButton: string | null, handleButtonClick: (buttonId: string) => void }> = ({ banners, activeButton, handleButtonClick }) => {
+const BannerNavbar: React.FC<BannerComponentProps & { activeButton: number | null, handleButtonClick: (buttonId: string | number) => void }> = ({ banners, activeButton, handleButtonClick }) => {
     return(
         <div className="flex mx-[20px] w-auto items-center justify-around relative">
             {banners.map((banner, index) => (

@@ -6,6 +6,10 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontSize: {
+      lg: ['22px', '28px'],
+    },
+
     container: {
       center: true,
     },
@@ -45,7 +49,13 @@ module.exports = {
           300: '#4d4d4d',
           400: '#333333',
           'test' : '#dddddd',
+          'x' : 'rgb(249, 249, 249)',
         },
+
+        blue: {
+          custom: 'rgb(0,130,250)',
+          'custom-hover': 'rgb(0, 112, 204)',
+        }
       },
 
       flexBasis: {

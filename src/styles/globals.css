@@ -39,8 +39,11 @@
         @apply bg-white;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 4px 8px 0px, rgba(0, 0, 0, 0.08) 0px 0px 2px 1px;
     }
+
+
+
     .container {
-        @apply sm:max-w-[calc(100%-40px)] md:max-w-[calc(100%-40px)] lg:max-w-[calc(100%-40px)] xl:w-[calc(100%-64px)] xl:max-w-[1156px] xxl:max-w-[1444px];
+        @apply w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-48px)] lg:max-w-[calc(100%-48px)] xl:w-[calc(100%-64px)] xl:max-w-[1156px] xxl:max-w-[1444px];
     }
 
     .banner-button-active{
@@ -68,13 +71,40 @@
         border-bottom: 4px solid rgb(51, 51, 51);
     }
 
-    .shadow-specific{
+    .shadow-custom, .shadow-specific{
         box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 4px 0px, rgba(0, 0, 0, 0.08) 0px 0px 2px 1px;
+    }
+
+    .shadow-hover-box{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 4px 8px 0px, rgba(0, 0, 0, 0.08) 0px 0px 2px 1px;
     }
 
     .transition-hover{
         opacity: 1;
         transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s, background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    }
+
+    .rotate-img{
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-property: -webkit-transform;
+        -moz-transition-property: -moz-transform;
+        -o-transition-property: -o-transform;
+        transition-property: transform;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .transition-unfold-list{
+        will-change: height;
+        transition: max-height 130ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    }
+
+    .transition-rotate-icon{
+        transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
     }
 }
 

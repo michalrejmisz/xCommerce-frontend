@@ -1,6 +1,7 @@
-import Header from "../Header/Header"
-import Icon from "@/common/components/UI/icons/Icon"
-import {} from "@/common/components/Banner/Banner"
+// import Header from "../Header/Header"
+import Header from "@/common/components/Header/Header"
+import Footer from "@/common/components/Footer/Footer"
+// import {} from "@/common/components/Banner/Banner"
 
 export default function Layout({ children }){
     return (
@@ -8,7 +9,7 @@ export default function Layout({ children }){
             <div>
                 <Header/>
                 <main>{children}</main>
-                <footer>&copy; Website</footer>
+                <Footer/>
             </div>
         </>
     );

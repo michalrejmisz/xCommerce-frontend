@@ -12,3 +12,13 @@ export interface ProductProps {
     price: string;
     lowestPrice?: string;
 }
+
+export interface FooterNavigationItem {
+    name: string;
+    link: string;
+}
+
+export interface FooterNavigationSection {
+    title: string;
+    list: FooterNavigationItem[];
+}
