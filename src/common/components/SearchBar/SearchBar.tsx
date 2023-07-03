@@ -4,8 +4,8 @@ import { UnstyledButton } from "@mantine/core";
 // Temporary search bar name with logo and panel on top
 const SearchBarInput = () => {
     return(
-        <div className="flex-grow flex-shrink lg:max-w-[740px]">{/*<div className="flex-grow flex-shrink w-full">*/}
-            <input type="text" placeholder="Czego szukasz?" className="w-full border-none focus:border-transparent focus:outline-none py-[5px] xl:pl-[15px] ml-[5px] pr-[15px]"/>
+        <div className="flex-grow flex-shrink lg:max-w-[740px] xl:pl-[15px] ml-[5px] pr-[15px] py-[5px]">{/*<div className="flex-grow flex-shrink w-full">*/}
+            <input type="text" placeholder="Czego szukasz?" className="w-full border-none focus:border-transparent focus:outline-none py-[5px] placeholder-gray-200"/>
         </div>
 
     )
@@ -37,7 +37,8 @@ export default function SearchBar(){
     return(
         <>
             {/*<div className="flex bg-white p-5">*/}
-                <div className="flex items-center xl:pr-[8px] xl:pl-[32px] lg:h-full lg:pr-[13px] lg:pl-[24px] xxl:max-w-[775px] xl:max-w-[400px]">
+            {/*    <div className="flex items-center xl:pr-[8px] xl:pl-[32px] lg:h-full lg:pr-[13px] lg:pl-[24px] xl:max-w-[400px] xxl:max-w-[775px] ">*/}
+                <div className="flex items-center xl:pr-[8px] xl:pl-[32px] lg:h-full lg:pr-[13px] lg:pl-[24px] w-full">
                     <div className="flex flex-row justify-between items-center rounded-full border border-gray-200 bg-white w-full h-[40px] focus:shadow-md">
                         <SearchBarInput/>
                         <div role="separator" className="hidden xl:block w-px h-6 bg-gray-400 mx-1"/>
