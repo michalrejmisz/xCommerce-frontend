@@ -56,7 +56,7 @@ const CardsCarousel: React.FC<ProductsCarouselProps>  = ({items, title, subtitle
                 className="pt-[8px] pb-[24px] xl:pb-[0px] bg-white"
             >
                     {items.map((item) => (
-                        <Carousel.Slide>
+                        <Carousel.Slide key={item.link}>
                             <ProductCard {...item} />
                         </Carousel.Slide>
                     ))}

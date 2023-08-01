@@ -94,7 +94,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({name, icon}) => {
             ref={itemRef}
             className="group/item flex w-full hover-button px-[12px] relative hover:overflow-visible z"
         >
-          <UnstyledButton className="flex flex-row justify-center items-center h-[48px] w-min">
+          <UnstyledButton className="max-w-[1200px]:hidden flex flex-row justify-center items-center h-[48px] w-min">
               <div className="max-[1200px]:hidden xxl:flex mr-[8px]">
                   {icon}
               </div>
