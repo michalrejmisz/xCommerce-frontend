@@ -1,52 +1,162 @@
-import {IconSearch, IconTriangleFilled, IconTriangleInvertedFilled} from "@tabler/icons-react";
-import { UnstyledButton } from "@mantine/core";
+import React, { useState, useEffect, useRef } from "react";
+import { useViewportSize } from "@mantine/hooks";
 
-// Temporary search bar name with logo and panel on top
-const SearchBarInput = () => {
-    return(
-        <div className="flex-grow flex-shrink lg:max-w-[740px] xl:pl-[15px] ml-[5px] pr-[15px] py-[5px]">{/*<div className="flex-grow flex-shrink w-full">*/}
-            <input type="text" placeholder="Czego szukasz?" className="w-full border-none focus:border-transparent focus:outline-none py-[5px] placeholder-gray-200"/>
-        </div>
+import ExpandableSearchBar from "./ExpandableSearchBar/ExpandableSearchBar";
+import HeaderSearchBar from "./HeaderSearchBar/HeaderSearchBar";
+import { SearchViewEnum } from "./SearchViewEnum";
+import useClickOutside from "@/common/hooks/useClickOutside";
 
-    )
-}
+interface SearchBarProps {}
 
-const CategoryDropDown = () => {
-    return(
-            <UnstyledButton className="hidden xl:flex items-center justify-center pt-[8px] pr-[9px] pb-[10px] pl-[12px] hover:bg-gray-50 hover:rounded-full">
-                    <span>Wszędzie</span>
-                    {/*<span className="w-1.5 h-1.5 ml-1">*/}
-                        {/*Add conditional depending on hidden list or not*/}
-                        {/*<IconTriangleFilled/>*/}
-                        <IconTriangleInvertedFilled className="ml-1 w-2 h-2"/>
-                    {/*</span>*/}
-                {/*</div>*/}
-            </UnstyledButton>
-    )
-}
+const SearchBar: React.FC<SearchBarProps> = () => {
+  const { width } = useViewportSize();
+  const searchBarRef = useRef(null);
+  const inputBarRef = useRef<HTMLInputElement | null>(null);
+  const [isInputFocus, setIsInputFocus] = useState<boolean>(false);
+  const [searchText, setSearchText] = useState<string>("");
+  const [isExpandableSearchBar, setIsExpandadbleSearchBar] = useState<boolean>(
+    false
+  );
+  const [searchView, setSearchView] = useState<SearchViewEnum>(
+    SearchViewEnum.Default
+  );
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const CATEGORIES = [
+    "Laptopy i komputery",
+    "Smartfony i smartwtche",
+    "Gaming i Streaming",
+    "Podzespoły komputerowe",
+    "Urządzenia peryferyjne",
+    "TV i audio",
+    "Smarthome i Lifestyle",
+    "Akcesoria",
+  ];
 
-const SearchButton = () => {
-    return(
-        <UnstyledButton className="hidden xl:flex justify-center items-center bg-gray-600 rounded-full border-none hover:bg-black w-16 h-full">
-            <IconSearch className="w-6 h-6 stroke-white"/>
-        </UnstyledButton>
-    )
-}
+  const handleFocusInputBar = () => {
+    if (inputBarRef.current) {
+      inputBarRef.current.focus();
+    }
+    setIsInputFocus(true);
+  };
 
-export default function SearchBar(){
-    return(
-        <>
-            {/*<div className="flex bg-white p-5">*/}
-            {/*    <div className="flex items-center xl:pr-[8px] xl:pl-[32px] lg:h-full lg:pr-[13px] lg:pl-[24px] xl:max-w-[400px] xxl:max-w-[775px] ">*/}
-                <div className="flex items-center xl:pr-[8px] xl:pl-[32px] lg:h-full lg:pr-[13px] lg:pl-[24px] w-full">
-                    <div className="flex flex-row justify-between items-center rounded-full border border-gray-200 bg-white w-full h-[40px] focus:shadow-md">
-                        <SearchBarInput/>
-                        <div role="separator" className="hidden xl:block w-px h-6 bg-gray-400 mx-1"/>
-                        <CategoryDropDown/>
-                        <SearchButton/>
-                    </div>
-                </div>
-            {/*</div>*/}
-        </>
+  const handleBlurInputBar = () => {
+    if (inputBarRef.current) {
+      inputBarRef.current.blur();
+    }
+    setIsInputFocus(false);
+  };
+
+  const toggleView = (view: SearchViewEnum) => {
+    setSearchView((currentView) =>
+      currentView === view ? SearchViewEnum.Default : view
     );
-}
+    // setSearchView(view);
+  };
+
+  const handleActiveCategory = (name: string | null) => {
+    setActiveCategory(name);
+    handleFocusInputBar();
+    toggleView(SearchViewEnum.Default);
+    console.log("Active catgory");
+  };
+
+  const handleInputFocus = () => {
+    setIsInputFocus(true);
+    // toggleView(SearchView.SearchSuggestions);
+  };
+
+  const handleInputBlur = () => {
+    setIsInputFocus(false);
+    // toggleView(SearchView.Default);
+  };
+  const handleSearchText = (text: string) => {
+    setSearchText(text);
+  };
+
+  const handleExpandableSearchBar = (isShow: boolean) => {
+    setIsExpandadbleSearchBar(isShow);
+  };
+
+  // const handleSearchBarView = (view?: SearchView) => {
+  //   if (view) return toggleView(view);
+  //   toggleView(SearchView.Default);
+  //   // const newView =
+  //   //   searchView === SearchView.CategoriesDropdown
+  //   //     ? SearchView.Default
+  //   //     : SearchView.CategoriesDropdown;
+
+  //   // toggleView(newView);
+  // };
+
+  // const handleDropdownView = () => {
+  //   const newView =
+  //     searchView === SearchView.CategoriesDropdown
+  //       ? SearchView.Default
+  //       : SearchView.CategoriesDropdown;
+  //   toggleView(newView);
+  //   // focusInputBar();
+  // };
+
+  useEffect(() => {
+    if (width >= 1080 && isExpandableSearchBar) {
+      setIsExpandadbleSearchBar(false);
+    }
+
+    if (width < 1080 && !isExpandableSearchBar) {
+      if (isInputFocus) {
+        setIsExpandadbleSearchBar(true);
+      }
+    }
+  }, [width, searchText, isInputFocus]);
+
+  const handleSearchBarView = (view?: SearchViewEnum) => {
+    // if (view) return toggleView(view);
+    // toggleView(SearchView.Default);
+    const newView =
+      searchView === SearchViewEnum.CategoriesDropdown
+        ? SearchViewEnum.Default
+        : SearchViewEnum.CategoriesDropdown;
+
+    toggleView(newView);
+  };
+
+  // useClickOutside({
+  //   ref: searchBarRef,
+  //   callback: () => setSearchView(SearchViewEnum.Default),
+  // });
+
+  return (
+    <div ref={searchBarRef}>
+      {isExpandableSearchBar && (
+        <ExpandableSearchBar
+          categories={CATEGORIES}
+          activeCategory={activeCategory}
+          searchView={searchView}
+          searchText={searchText}
+          inputBarRef={inputBarRef}
+          handleActiveCategory={handleActiveCategory}
+          setSearchView={setSearchView}
+          handleSearchText={handleSearchText}
+          setIsShow={handleExpandableSearchBar}
+          handleSearchBarView={handleSearchBarView}
+          handleBlurInputBar={handleBlurInputBar}
+        />
+      )}
+      <HeaderSearchBar
+        categories={CATEGORIES}
+        activeCategory={activeCategory}
+        searchText={searchText}
+        searchView={searchView}
+        inputBarRef={inputBarRef}
+        isInputFocus={isInputFocus}
+        toggleView={toggleView}
+        handleActiveCategory={handleActiveCategory}
+        handleSearchText={handleSearchText}
+        handleBlurInputBar={handleBlurInputBar}
+        handleFocusInputBar={handleFocusInputBar}
+      />
+    </div>
+  );
+};
+
+export default SearchBar;

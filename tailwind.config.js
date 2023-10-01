@@ -24,6 +24,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'lato': ['Lato', 'sans-serif'],
+        'lato-bold' : ['Lato', ]
       },
 
       backgroundImage: {
@@ -44,10 +45,13 @@ module.exports = {
           50: '#f5f5f5',
           75: '#f9f9f9',
           100: '#EBEBEB',
+          150: '#949494',
           200: '#cccccc',
+          225: '#dddddd',
           250: '#707070FF',
           300: '#4d4d4d',
           400: '#333333',
+          450: '#444444',  
           'test' : '#dddddd',
           'x' : 'rgb(249, 249, 249)',
         },
