@@ -1,0 +1,11 @@
+{
+    "tabWidth": 4,
+    "editor.defaultFormatter": "esbenp.vs-code-prettier-eslint",
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "plugins": [
+        "prettier-plugin-tailwindcss" 
+      ]
+}

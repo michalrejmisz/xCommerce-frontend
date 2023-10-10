@@ -26,7 +26,7 @@ const CategoriesDropdown: React.FC<CategoriesDropdownProps> = ({
 }) => {
   const categoriesDropDownRef = useRef<HTMLDivElement>(null);
   const [isDropdownShow, setIsDropdownShow] = useState(
-    searchView === SearchViewEnum.CategoriesDropdown
+    searchView === SearchViewEnum.CategoriesDropdown,
   );
 
   useEffect(() => {
@@ -47,28 +47,28 @@ const CategoriesDropdown: React.FC<CategoriesDropdownProps> = ({
   return (
     <div
       ref={categoriesDropDownRef}
-      className="hidden xl:flex relative h-[34px] hover:bg-gray-50 hover:rounded-full cursor-pointer"
+      className="relative hidden h-[34px] cursor-pointer hover:rounded-full hover:bg-gray-50 xl:flex"
     >
       <div
         onClick={() => handleSearchBarView(SearchView.CategoriesDropdown)}
         // onClick={toggleCategoriesDropdown}
-        className="flex items-center justify-center pt-[8px] pr-[9px] pb-[8px] pl-[12px] whitespace-nowrap"
+        className="flex items-center justify-center whitespace-nowrap pb-[8px] pl-[12px] pr-[9px] pt-[8px]"
       >
         <span>{activeCategory === null ? "Wszędzie" : activeCategory}</span>
-        <IconTriangleInvertedFilled className="ml-1 w-2 h-2" />
+        <IconTriangleInvertedFilled className="ml-1 h-2 w-2" />
       </div>
       {isDropdownShow && (
-        <div className="absolute top-full right-0 bg-white z-[1100] mt-[4px] shadow-hover-box rounded-b-md">
-          <ul className="whitespace-nowrap my-[5px]">
+        <div className="shadow-hover-box absolute right-0 top-full z-[1100] mt-[4px] rounded-b-md bg-white">
+          <ul className="my-[5px] whitespace-nowrap">
             <li
               key="all"
               onClick={() => handleActiveCategory(null)}
               className={clsx(
-                "bg-gray-50 h-[44px] flex flex-row items-center pr-[16px]",
+                "flex h-[44px] flex-row items-center bg-gray-50 pr-[16px]",
                 {
                   "pl-[32px]": activeCategory != null,
-                  "font-bold pl-[8px]": activeCategory === null,
-                }
+                  "pl-[8px] font-bold": activeCategory === null,
+                },
               )}
             >
               {activeCategory === null && (
@@ -83,11 +83,11 @@ const CategoriesDropdown: React.FC<CategoriesDropdownProps> = ({
                   key={index}
                   onClick={() => handleActiveCategory(category)}
                   className={clsx(
-                    "hover:bg-gray-50 flex flex-row items-center h-[44px] pr-[16px]",
+                    "flex h-[44px] flex-row items-center pr-[16px] hover:bg-gray-50",
                     {
                       "pl-[32px]": !isActive,
-                      "font-bold pl-[8px]": isActive,
-                    }
+                      "pl-[8px] font-bold": isActive,
+                    },
                   )}
                 >
                   {isActive && (

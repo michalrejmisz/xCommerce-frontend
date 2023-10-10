@@ -4,189 +4,212 @@ import HamburgerMenuContent from "./HamburgerMenuContent";
 import React, { useState } from "react";
 
 const DUMB_ARRAY = [
-  {
-    name: "Smartphones and Smartwatches",
-    subcategories: [
-      {
-        name: "Smartphones",
+    {
+        name: "Smartphones and Smartwatches",
         subcategories: [
-          {
-            name: "Apple",
-            subcategories: [
-              { name: "iPhone 13", subcategories: [] },
-              { name: "iPhone 13 Pro", subcategories: [] },
-              { name: "iPhone SE", subcategories: [] },
-            ],
-          },
-          {
-            name: "Samsung",
-            subcategories: [
-              { name: "Galaxy S21", subcategories: [] },
-              { name: "Galaxy Note 20", subcategories: [] },
-              { name: "Galaxy A52", subcategories: [] },
-            ],
-          },
-          {
-            name: "Google",
-            subcategories: [
-              { name: "Pixel 6", subcategories: [] },
-              { name: "Pixel 5a", subcategories: [] },
-            ],
-          },
+            {
+                name: "Smartphones",
+                subcategories: [
+                    {
+                        name: "Apple",
+                        subcategories: [
+                            { name: "iPhone 13", subcategories: [] },
+                            { name: "iPhone 13 Pro", subcategories: [] },
+                            { name: "iPhone SE", subcategories: [] },
+                        ],
+                    },
+                    {
+                        name: "Samsung",
+                        subcategories: [
+                            { name: "Galaxy S21", subcategories: [] },
+                            { name: "Galaxy Note 20", subcategories: [] },
+                            { name: "Galaxy A52", subcategories: [] },
+                        ],
+                    },
+                    {
+                        name: "Google",
+                        subcategories: [
+                            { name: "Pixel 6", subcategories: [] },
+                            { name: "Pixel 5a", subcategories: [] },
+                        ],
+                    },
+                ],
+            },
+            {
+                name: "Smartwatches",
+                subcategories: [
+                    {
+                        name: "Apple Watch",
+                        subcategories: [
+                            { name: "Series 7", subcategories: [] },
+                            { name: "SE", subcategories: [] },
+                        ],
+                    },
+                    {
+                        name: "Samsung Galaxy Watch",
+                        subcategories: [
+                            { name: "Watch 4", subcategories: [] },
+                            { name: "Watch Active 2", subcategories: [] },
+                        ],
+                    },
+                ],
+            },
         ],
-      },
-      {
-        name: "Smartwatches",
+    },
+    {
+        name: "Laptops and Desktops",
         subcategories: [
-          {
-            name: "Apple Watch",
-            subcategories: [
-              { name: "Series 7", subcategories: [] },
-              { name: "SE", subcategories: [] },
-            ],
-          },
-          {
-            name: "Samsung Galaxy Watch",
-            subcategories: [
-              { name: "Watch 4", subcategories: [] },
-              { name: "Watch Active 2", subcategories: [] },
-            ],
-          },
+            {
+                name: "Laptops",
+                subcategories: [
+                    {
+                        name: "Apple",
+                        subcategories: [
+                            { name: "MacBook Pro", subcategories: [] },
+                            { name: "MacBook Air", subcategories: [] },
+                        ],
+                    },
+                    {
+                        name: "Dell",
+                        subcategories: [
+                            { name: "XPS 15", subcategories: [] },
+                            { name: "Inspiron 14", subcategories: [] },
+                        ],
+                    },
+                    {
+                        name: "HP",
+                        subcategories: [
+                            { name: "Spectre x360", subcategories: [] },
+                            { name: "ENVY 13", subcategories: [] },
+                        ],
+                    },
+                ],
+            },
+            {
+                name: "Desktops",
+                subcategories: [
+                    {
+                        name: "Custom Built",
+                        subcategories: [],
+                    },
+                    {
+                        name: "Dell",
+                        subcategories: [
+                            { name: "XPS Tower", subcategories: [] },
+                            { name: "Inspiron Desktop", subcategories: [] },
+                        ],
+                    },
+                    {
+                        name: "HP",
+                        subcategories: [
+                            { name: "Pavilion", subcategories: [] },
+                        ],
+                    },
+                ],
+            },
         ],
-      },
-    ],
-  },
-  {
-    name: "Laptops and Desktops",
-    subcategories: [
-      {
-        name: "Laptops",
-        subcategories: [
-          {
-            name: "Apple",
-            subcategories: [
-              { name: "MacBook Pro", subcategories: [] },
-              { name: "MacBook Air", subcategories: [] },
-            ],
-          },
-          {
-            name: "Dell",
-            subcategories: [
-              { name: "XPS 15", subcategories: [] },
-              { name: "Inspiron 14", subcategories: [] },
-            ],
-          },
-          {
-            name: "HP",
-            subcategories: [
-              { name: "Spectre x360", subcategories: [] },
-              { name: "ENVY 13", subcategories: [] },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Desktops",
-        subcategories: [
-          {
-            name: "Custom Built",
-            subcategories: [],
-          },
-          {
-            name: "Dell",
-            subcategories: [
-              { name: "XPS Tower", subcategories: [] },
-              { name: "Inspiron Desktop", subcategories: [] },
-            ],
-          },
-          {
-            name: "HP",
-            subcategories: [{ name: "Pavilion", subcategories: [] }],
-          },
-        ],
-      },
-    ],
-  },
+    },
 ];
 
 interface HamburgerProps {
-  windowWidth: number;
-  isOnTop: boolean;
+    windowWidth: number;
+    isOnTop: boolean;
+    className?: string;
 }
 
-const HamburgerMenu: React.FC<HamburgerProps> = ({ windowWidth, isOnTop }) => {
-  const [showBackdrop, setShowBackdrop] = useState(false);
+const HamburgerMenu: React.FC<HamburgerProps> = ({
+    windowWidth,
+    isOnTop,
+    className,
+}) => {
+    const [showBackdrop, setShowBackdrop] = useState(false);
 
-  const handleMouseEnter = () => {
-    setShowBackdrop(true);
-  };
+    const handleMouseEnter = () => {
+        setShowBackdrop(true);
+    };
 
-  const handleMouseLeave = () => {
-    setShowBackdrop(true);
-  };
+    const handleMouseLeave = () => {
+        setShowBackdrop(true);
+    };
 
-  return (
-    <>
-      {windowWidth >= 1080 && (
+    return (
         <>
-          <div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={clsx({
-              "group/hamburger": true,
-              "h-[56px] cursor-pointer absolute top-0 left-0 items-center hover:shadow-specific hover:outline-2 hover:rounded-lg hidden xl:block": true,
-              "transition-opacity transition-transform duration-500": true,
-              "scale-100 opacity-100": !isOnTop,
-              "scale-0 opacity-0": isOnTop,
-            })}
-          >
-            <div className="flex items-center h-full min-w-[88px]">
-              <div className="group-hover/hamburger:bg-white bg-gray-50 rounded-lg py-[4px] px-[12px]">
-                <Icon name="HamburgerMenuIcon" size={32} />
-              </div>
-            </div>
-          </div>
-          {/* Hover backdrop*/}
-          <div
-            className={clsx({
-              "fixed top-[56px] left-0 h-[0px] w-full overflow-y-auto overflow-x-hidden outline-none bg-black/70 z-[400]": true,
-              "transition-opacity ease-in-out duration-500 opacity-0": true,
-              "opacity-100 h-full": showBackdrop,
-            })}
-          />
+            {windowWidth >= 1080 && (
+                <>
+                    <div
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        className={clsx(
+                            "group/hamburger",
+                            "hover:shadow-specific absolute left-0 top-0 hidden h-[56px] cursor-pointer items-center hover:rounded-lg hover:outline-2 xl:block",
+                            "transition-opacity transition-transform duration-500",
+                            className,
+                            {
+                                "scale-100 opacity-100": !isOnTop,
+                                "scale-0 opacity-0": isOnTop,
+                            },
+                        )}
+                    >
+                        <div className="flex h-full min-w-[88px] items-center">
+                            <div className="rounded-lg bg-gray-50 px-[12px] py-[4px] group-hover/hamburger:bg-white">
+                                <Icon name="HamburgerMenuIcon" size={32} />
+                            </div>
+                        </div>
+                    </div>
+                    {/* Hover backdrop*/}
+                    <div
+                        className={clsx({
+                            "fixed left-0 top-[56px] z-[400] h-[0px] w-full overflow-y-auto overflow-x-hidden bg-black/70 outline-none":
+                                true,
+                            "opacity-0 transition-opacity duration-500 ease-in-out":
+                                true,
+                            "h-full opacity-100": showBackdrop,
+                        })}
+                    />
 
-          {showBackdrop && (
-            <HamburgerMenuContent
-              handleMenuMouseEnter={handleMouseEnter}
-              handleMenuMouseLeave={handleMouseLeave}
-            />
-          )}
+                    {showBackdrop && (
+                        <HamburgerMenuContent
+                            handleMenuMouseEnter={handleMouseEnter}
+                            handleMenuMouseLeave={handleMouseLeave}
+                        />
+                    )}
+                </>
+            )}
+
+            {windowWidth < 1080 && (
+                <div
+                    // onMouseEnter={handleMouseEnter}
+                    // onMouseLeave={handleMouseLeave}
+                    className={clsx(
+                        "z-[1000] flex cursor-pointer flex-col items-center justify-center xl:hidden",
+                        className,
+                    )}
+                >
+                    <div className="flex h-[24px] w-[24px] items-center justify-center px-[32px] md:h-[32px] md:w-[32px] md:px-[44px]">
+                        <span className="inline-flex h-[24px] w-[24px] items-center justify-center md:h-[32px] md:w-[32px]">
+                            <Icon
+                                name="HamburgerMenuIcon"
+                                size={32}
+                                className="h-[24px] w-[24px] md:h-[32px] md:w-[32px]"
+                            />
+                        </span>
+                    </div>
+                    <span className="text-[10px] leading-[12px] md:text-[11px]">
+                        Menu
+                    </span>
+                </div>
+            )}
+
+            {/* Hover backdrop*/}
+            {/*<div*/}
+            {/*    className={clsx({*/}
+            {/*        "fixed top-[72px] left-0 h-[0px] w-full overflow-y-auto overflow-x-hidden outline-none bg-black/70 z-[400]" :  true,*/}
+            {/*        "transition-opacity ease-in-out duration-500 opacity-0" : true,*/}
+            {/*        "opacity-100 h-full": showBackdrop*/}
+            {/*    })}*/}
+            {/*/> */}
         </>
-      )}
-
-      {windowWidth < 1080 && (
-        <div
-          // onMouseEnter={handleMouseEnter}
-          // onMouseLeave={handleMouseLeave}
-          className="flex flex-col xl:hidden cursor-pointer items-center justify-center z-[1000]"
-        >
-          <div className="md:px-[44px] h-[30px]">
-            <Icon name="HamburgerMenuIcon" size={32} />
-          </div>
-          <span className="text-[11px] leading-[12px]">Menu</span>
-        </div>
-      )}
-
-      {/* Hover backdrop*/}
-      {/*<div*/}
-      {/*    className={clsx({*/}
-      {/*        "fixed top-[72px] left-0 h-[0px] w-full overflow-y-auto overflow-x-hidden outline-none bg-black/70 z-[400]" :  true,*/}
-      {/*        "transition-opacity ease-in-out duration-500 opacity-0" : true,*/}
-      {/*        "opacity-100 h-full": showBackdrop*/}
-      {/*    })}*/}
-      {/*/> */}
-    </>
-  );
+    );
 };
 
 // interface HamburgerNavProps{
