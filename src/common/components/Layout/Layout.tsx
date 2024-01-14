@@ -11,6 +11,7 @@ export default function Layout({ children }){
                 <Header/>
                 <main className="mt-[150px]">
                     {children}
+                    xd
                     {/*<div className="fixed top-0 left-0 h-full w-full overflow-y-auto overflow-x-hidden outline-none bg-black/70 z-[900]" />*/}
                 </main>
                 <Footer/>
